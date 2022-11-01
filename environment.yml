@@ -1,0 +1,4 @@
+name: spotify
+channels:
+  - conda-forge
+prefix: C:\Users\Will Forker\.conda\envs\spotify
