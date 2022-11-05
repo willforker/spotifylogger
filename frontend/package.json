@@ -1,0 +1,15 @@
+{
+  "name": "kxsc",
+  "version": "1.0.0",
+  "description": "UI tool for Robot toggle.",
+  "main": "index.html",
+  "scripts": {
+    "start": "node ./src/node.js"
+  },
+  "author": "KXSC",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}

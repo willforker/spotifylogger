@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+#bg {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    background: url('./public/Background.jpeg'); 
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+}
+
+#kxsc-logo {
+    position: absolute;
+    top : 2rem;
+    right: 2rem;
+    width: 8em;
+}
+
+#btn-toggle {
+    width: 50%;
+    height: auto;
+}
+
+h1 {
+    font-size: 5rem;
+    color : #9bd6ff;
+}
