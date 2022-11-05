@@ -8,8 +8,8 @@ from tkinter import *
 running = True
 idx = 0
 SPOTIFY_GET_CURRENT_TRACK_URL = "https://api.spotify.com/v1/me/player"
-SPOTIFY_ACCESS_TOKEN = 'BQCxlQPFC22OQ-559EaaMQ02P3gMlp3R9nUAaFoLgx-xsnphYKgldN3NQG7aBlKxkgCncOwmTBGqdPIyq785v2UCC-ocIOyt2xYeIpa2t7kyEbBICCSsEAiIpbsfe6CBrAfiZBgvGLzGvoeiigPHVuURZE4vtq3jvHKLI491y22AF-V2afI'
-SPINITRON_API_KEY = 'GP1jG2PXQBku1JZDOOFQIDwM'
+SPOTIFY_ACCESS_TOKEN = 'ENTER KEY HERE'
+SPINITRON_API_KEY = 'ENTER KEY HERE'
 SPINITRON_API_URL = 'https://spinitron.com/api/spins?access-token='+SPINITRON_API_KEY
 
 # def start():
