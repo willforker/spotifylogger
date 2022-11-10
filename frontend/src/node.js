@@ -7,13 +7,18 @@ const port = 3000;
 
 app.use(cors());
 
+var proc;
+
 // Execute command line invocation of robot script. 
 app.get('/execute', (req, res) => {
+  // Path parameter not necessary.
   // const path = "/Users/ryanlevy/CSCI";
   // const path = "/Users/kxscrobot1/Desktop";
   const command = 'python /Users/kxscrobot1/Desktop/spotifylogger-main/spotify-pauseplay.py';
+  // Test command.
+  // const command = 'ls';
   console.log("Handling execute.");
-  cp.exec(command, (error, stdout, stderr) => {
+  proc = cp.exec(command, (error, stdout, stderr) => {
       console.log('stdout: ' + stdout);
       console.log('stderr: ' + stderr);
       if (error !== null) {
@@ -25,18 +30,18 @@ app.get('/execute', (req, res) => {
   });
 });
 
-// Kill the robot.
+// Kill the running robot process.
 app.get('/kill', (req, res) => {
-  console.log("Handling kill")
-  // if (proc) {
-  //   try {
-  //     proc.kill();
-  //     console.log("Killed");
-  //   }
-  //   catch (err) {
-  //     res.sendStatus(500);
-  //   }
-  // }
+  console.log("Handling kill");
+  if (proc) {
+    try {
+      proc.kill();
+      console.log("Killed");
+    }
+    catch (err) {
+      res.sendStatus(500);
+    }
+  }
 });
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));
