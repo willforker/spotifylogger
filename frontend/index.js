@@ -18,10 +18,10 @@ const HandleButtonClick = async (event) => {
     const state = localStorage.getItem(localStorageKey);
     
     if (state === "ON") {
-        const response = fetch('http://localhost:3000/kill').then(resp => resp.json()).then(data => console.log(data));
+        const response = await fetch('http://localhost:3000/kill');
     }
     else if (state === "OFF") {
-        const response = fetch('http://localhost:3000/execute').then(resp => resp.json()).then(data => console.log(data));
+        const response = await fetch('http://localhost:3000/execute');
     }
     localStorage.setItem(localStorageKey, state === "OFF" ? "ON" : "OFF");
 

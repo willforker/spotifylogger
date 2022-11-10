@@ -14,20 +14,33 @@ app.get('/execute', (req, res) => {
   // Path parameter not necessary.
   // const path = "/Users/ryanlevy/CSCI";
   // const path = "/Users/kxscrobot1/Desktop";
-  const command = 'python /Users/kxscrobot1/Desktop/spotifylogger-main/spotify-pauseplay.py';
+  const command = 'python';
+  const args = ['/Users/kxscrobot1/Desktop/spotifylogger-main/spotify-pauseplay.py'];
   // Test command.
-  // const command = 'ls';
+  // const command = 'node';
+  // const args = ['/Users/ryanlevy/Desktop/test-program.js'];
   console.log("Handling execute.");
-  proc = cp.exec(command, (error, stdout, stderr) => {
-      console.log('stdout: ' + stdout);
-      console.log('stderr: ' + stderr);
-      if (error !== null) {
-           console.log('exec error: ' + error);
-           res.sendStatus(500);
-           return;
-      }
-      res.send({message:`${stdout}`})
-  });
+  // proc = cp.exec(command, (error, stdout, stderr) => {
+  //     if (error !== null) {
+  //          console.log('exec error: ' + error);
+  //          res.sendStatus(500);
+  //          return;
+  //     }
+  //     res.send({message:`${stdout}`});
+  //     return;
+  // });
+  try {
+    proc = cp.spawn(command, args, {detached: true});
+    proc.stdout.on('data', data => {
+      console.log(`stdout:\n${data}`);
+    });
+    res.send({message: 'Successfully executed'});
+    return;
+  }
+  catch (err) {
+    res.sendStatus(500);
+    return;
+  }
 });
 
 // Kill the running robot process.
@@ -35,8 +48,10 @@ app.get('/kill', (req, res) => {
   console.log("Handling kill");
   if (proc) {
     try {
-      proc.kill();
+      process.kill(-proc.pid);
       console.log("Killed");
+      res.send({message:'Killed'});
+      return;
     }
     catch (err) {
       res.sendStatus(500);
