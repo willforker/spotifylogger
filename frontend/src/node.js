@@ -14,7 +14,7 @@ app.get('/execute', (req, res) => {
   // Path parameter not necessary.
   // const path = "/Users/ryanlevy/CSCI";
   // const path = "/Users/kxscrobot1/Desktop";
-  const command = 'python';
+  const command = 'python /Users/kxscrobot1/Desktop/spotifylogger-main/spotify-pauseplay.py';
   const args = ['/Users/kxscrobot1/Desktop/spotifylogger-main/spotify-pauseplay.py'];
   // Test command.
   // const command = 'node';
@@ -30,7 +30,8 @@ app.get('/execute', (req, res) => {
   //     return;
   // });
   try {
-    proc = cp.spawn(command, args, {detached: true});
+    proc = cp.spawn('python', args, {detached: true, shell: true});
+    console.log("")
     proc.stdout.on('data', data => {
       console.log(`stdout:\n${data}`);
     });

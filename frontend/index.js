@@ -15,7 +15,10 @@ window.onload = () => {
 }
 
 const HandleButtonClick = async (event) => {
-    const state = localStorage.getItem(localStorageKey);
+    const state = await localStorage.getItem(localStorageKey);
+    localStorage.setItem(localStorageKey, state === "OFF" ? "ON" : "OFF");
+
+    UpdateUI(event.target, localStorage.getItem(localStorageKey));
     
     if (state === "ON") {
         const response = await fetch('http://localhost:3000/kill');
@@ -23,9 +26,7 @@ const HandleButtonClick = async (event) => {
     else if (state === "OFF") {
         const response = await fetch('http://localhost:3000/execute');
     }
-    localStorage.setItem(localStorageKey, state === "OFF" ? "ON" : "OFF");
-
-    UpdateUI(event.target, localStorage.getItem(localStorageKey));
+    
 }
 
 // Update UI based on current Robot State.
