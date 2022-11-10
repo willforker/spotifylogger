@@ -14,7 +14,7 @@ app.get('/execute', (req, res) => {
   // Path parameter not necessary.
   // const path = "/Users/ryanlevy/CSCI";
   // const path = "/Users/kxscrobot1/Desktop";
-  const command = 'python /Users/kxscrobot1/Desktop/spotifylogger-main/spotify-pauseplay.py';
+  const command = 'python /Users/kxscrobot1/Desktop/spotifylogger-v1/spotify-pauseplay.py';
   // Test command.
   // const command = 'ls';
   console.log("Handling execute.");
